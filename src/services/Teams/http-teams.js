@@ -1,13 +1,12 @@
-import { BASE_API_TEAMS, HTTP_TEAM } from './../config';
+import { BASE_API_TEAMS, HTTP_TEAM } from '../config';
 import httpBase from '../http-base';
 
 class HttpTeam {
 
     async getTeams(){
         try {
-            console('getTeams');
-            const url  = `${ BASE_API_TEAMS }${ HTTP_TEAM.getTeams }`
-            console('url', url);
+            const url  = `${ BASE_API_TEAMS}${ HTTP_TEAM.getTeams }`
+            
             const data = await httpBase.baseGet(url, {});
             return data;
         } catch (error) {
@@ -15,9 +14,9 @@ class HttpTeam {
         }
     }
 
-    async getTeamsById(id){
+    async getPlayersByIdTeam(strTeam){
         try {
-            const url  = `${ BASE_API_TEAMS }${ HTTP_TEAM.getTeams }/${id}`;
+            const url  = `${ BASE_API_TEAMS }${ HTTP_TEAM.getTeam }${strTeam}`;
             const data = await httpBase.baseGet(url, {});
             return data;
         } catch (error) {

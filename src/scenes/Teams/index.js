@@ -2,14 +2,13 @@ import React, {Component} from 'react'
 import {
     View,
     Text,
-    FlatList,
-    StyleSheet
+    FlatList
 } from 'react-native';
 
 
 import ItemTeam from './components/item-team';
-import ItemSeparator from './components/item-separator';
-import HttpTeams from "../../services/Teams/http-teams2";
+import ItemSeparator from './components/item.separator';
+import HttpTeam from "../../services/Teams/http-teams";
 
 class Teams extends Component{
 
@@ -25,12 +24,11 @@ class Teams extends Component{
     }
 
     async getTeams(){
-        console.log('http', HttpTeams);  
-        const data = await HttpTeams.getTeams();
-       /* this.setState({
+        const data = await HttpTeam.getTeams();
+        this.setState({
             teamList: data.teams
-        });*/
-        console.log('equipos:' , data);
+        });
+        console.log('equipos:' , data.teams);
     }
 
     static navigationOptions = {
@@ -42,7 +40,7 @@ class Teams extends Component{
     renderItem = ( { item }) => <ItemTeam navigation = { this.props.navigation } team = { item } />
     separatorComponent = () => <ItemSeparator />;
     emptyComponent = () => <Text>No se encontraron equipos </Text>
-    keyExtractor = item => item._id.toString();
+    keyExtractor = item => item.idTeam.toString();
     render(){
         return (
             <View> 
@@ -55,18 +53,10 @@ class Teams extends Component{
                     />
              
             </View>
-        )
+        );
     }
 }
 
-const styles = StyleSheet.create({
-    container: {
-      flex: 1,
-      justifyContent: 'center',
-      alignItems: 'center',
-      backgroundColor: '#F5FCFF',
-    },
-  
-  });
+
 
 export default Teams;

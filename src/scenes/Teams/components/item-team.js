@@ -10,14 +10,14 @@ import {
 
 const ItemTeam = (props) => (
     <TouchableHighlight
-       // onPress = { ()=> props.navigation.navigate('PlayesDetailScreen', { id: props.team._id } ) }
-      //  underlayColor = "#ccc"
+        onPress = { ()=> props.navigation.navigate('PlayersScreen', { strTeam: props.team.strTeam } ) }
+        underlayColor = "#ccc"
     >
          <View style={ styles.container }>
             <View styles={ styles.left }>
                 <Image
                     style={styles.cover}
-                    source ={{ uri: props.team.strStadiumThumb}}
+                    source ={{ uri: props.team.strTeamBadge}}
                 />
             </View>
             <View style={ styles.right }>
@@ -34,8 +34,8 @@ const styles = StyleSheet.create({
     },
     
     cover:{
-        height: 120,
-        width: 180,
+        height: 60,
+        width: 60,
         resizeMode: 'contain',
     },
     right:{
@@ -47,7 +47,7 @@ const styles = StyleSheet.create({
         paddingRight: 2,
     },
     strTeam:{
-        fontSize: 18,
+        fontSize: 26,
         color: '#44546b'
     }
     
